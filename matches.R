@@ -228,10 +228,6 @@ op_names_dat %>%
   summarize(p = mean(win_proba)) %>%
   arrange(desc(p))
 
-arrange(desc(win_proba)) %>% head(20) %>% name_teams()
-     
-op_matchups_dat %>% head()
-
 possible_blue_teams_mat <- possible_teams_mat
 n_compare_teams <- 1400
 set.seed(4)
