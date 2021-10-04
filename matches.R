@@ -113,15 +113,15 @@ possible_our_teams_dat %<>% mutate(win_proba = outcome_probas) %>% arrange(desc(
 ################################################################################
 ## Get best teams against this specific Blue team.
 ################################################################################
-top_n <- 10
-top_teams_dat <- possible_our_teams_dat %>% head(top_n)
-top_probas <- possible_our_teams_dat %$% win_proba %>% head(top_n)
-top_teams_named_dat <- top_teams_dat %>% 
+name_teams <- . %>%
   select(-win_proba) %>% 
   apply(1, function(row) columns[c(row) == 1]) %>% 
   t() %>% 
-  cbind(top_probas) %>% 
   as_tibble()
+top_n <- 10
+top_teams_dat <- possible_our_teams_dat %>% head(top_n)
+top_probas <- possible_our_teams_dat %$% win_proba %>% head(top_n)
+top_teams_named_dat <- top_teams_dat %>% name_teams() %>% mutate(win_proba = top_probas)
 possible_our_teams_dat %>%
   as.data.frame() %>%
   {.[.[,"Arch-Alligator"] & .[,"Greenery Giant"] & .[,"Landslide Lord"] & 
@@ -169,8 +169,18 @@ possible_our_teams_dat %>% count_above_50()
 ################################################################################
 ## Find out why Alligator is so good against this team. ########################
 ################################################################################
-possible_our_teams_dat
+top_team_dat <- top_teams_dat %>% .[1,]
+name_teams(top_team_dat)
 
+alligator_teams_dat <- possible_our_teams_dat %>%
+  as.data.frame() %>%
+  .[.[,'Arch-Alligator'] == 1, columns] %>%
+  as_tibble()
+
+alligator_opponent_mat <- opponent_mat %>% .[1:nrow(alligator_teams_dat),]
+alligator_games_mat <- cbind(as.matrix(alligator_teams_dat), alligator_opponent_mat)
+alligator_preds <- predict(model, alligator_games_mat)
+alligator_preds
 ################################################################################
 ## Get predicted win proportions over (a sample of) all possible games, 
 ## against all kinds of Blue teams.
@@ -207,6 +217,18 @@ op_win_probas_plot <- ggplot(op_games_dat) +
 height = 4
 ggsave(op_win_probas_plot, path="results", filename="op_win_probas.png", dpi=140, width=height*2, height=height)
 op_games_dat %>% count_above_50()
+op_names_dat <- op_games_dat %>% 
+  select(ends_with('green'), win_proba) %>% 
+  rename_with(function(s) str_replace(s, ';green', ''))
+
+op_names_dat %>%
+  name_teams() %>%
+  mutate(win_proba = op_names_dat$win_proba) %>%
+  group_by(V1, V2, V3, V4, V5) %>%
+  summarize(p = mean(win_proba)) %>%
+  arrange(desc(p))
+
+arrange(desc(win_proba)) %>% head(20) %>% name_teams()
      
 op_matchups_dat %>% head()
 

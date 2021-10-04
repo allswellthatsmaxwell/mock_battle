@@ -1,0 +1,603 @@
+(pred$val * 100) %>% round()
+round(pred$val * 100) %/% 10
+round(pred$val * 100) %/% 10 * 10
+tibble(bucket = buckets$val, ytrue = y$val)
+buckets <- list(val = round(pred$val * 100) %/% 10 * 10)
+tibble(bucket = buckets$val, ytrue = y$val)
+tibble(bucket = buckets$val, ytrue = y$val, ypred = pred$val)
+tibble(bucket = buckets$val, ytrue = y$val, ypred = pred$val) %>%
+group_by(bucket) %>%
+dplyr::summarize(true_win_prop = mean(ytrue), pred_win_prop = mean(ypred))
+ggplot(aes(x=true_win_prop, y=pred_win_prop)
+bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_line() +
+theme_bw()
+bucket_means_dat
+bucket_means_dat <- tibble(bucket = buckets$val, ytrue = y$val, ypred = pred$val) %>%
+group_by(bucket) %>%
+dplyr::summarize(true_win_prop = mean(ytrue), pred_win_prop = mean(ypred))
+bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_line() +
+theme_bw()
+bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_line() +
+abline(x=1, y=1)
+bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_line() +
+geom_abline(x=1, y=1)
+bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_line() +
+geom_abline() +
+theme_bw()
+bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw()
+bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red') +
+geom_abline() +
+theme_bw()
+bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_abline() +
+theme_bw()
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_abline() +
+theme_bw()
+buckets <- list(val = round(pred$val * 100) %/% 5 * 10)
+buckets
+buckets <- list(val = round(pred$val * 100) %/% 5 * 5)
+buckets
+bucket_means_dat <- tibble(bucket = buckets$val, ytrue = y$val, ypred = pred$val) %>%
+group_by(bucket) %>%
+dplyr::summarize(true_win_prop = mean(ytrue), pred_win_prop = mean(ypred))
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_abline() +
+theme_bw()
+bucket_means_dat
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw()
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_abline() +
+theme_bw()
+calibration_plot
+buckets <- list(val = round(pred$val * 100) %/% 10 * 10)
+buckets
+bucket_means_dat <- tibble(bucket = buckets$val, ytrue = y$val, ypred = pred$val) %>%
+group_by(bucket) %>%
+dplyr::summarize(true_win_prop = mean(ytrue), pred_win_prop = mean(ypred))
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_abline() +
+theme_bw()
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw()
+calibration_plot
+bucket_means_dat
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw() +
+scale_y_continuous(labels=scales::percent, limits=c(0, 1))
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw() +
+scale_y_continuous(labels=scales::percent, limits=c(0, 1)) +
+scale_x_continuous(labels=scales::percent, limits=c(0, 1))
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw() +
+scale_y_continuous(labels=scales::percent, limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=scales::percent, limits=c(0, 1), breaks=seq(0, 1, 0.1))
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw() +
+scale_y_continuous(labels=scales::percent, limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=scales::percent, limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank())
+calibration_plot
+?scales::percent
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw() +
+scale_y_continuous(labels=partial(scales::percent, accuracy=0.1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=scales::percent, limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank())
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw() +
+scale_y_continuous(labels=partial(scales::percent, accuracy=0), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=scales::percent, limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank())
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw() +
+scale_y_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=scales::percent, limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank())
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw() +
+scale_y_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank())
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw() +
+scale_y_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank()) +
+labs(x="true win %", y="predicted win %")
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw() +
+scale_y_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank()) +
+labs(x="true win %", y="predicted win %", title="Calibration")
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=4) +
+geom_line(color='red') +
+geom_abline() +
+theme_bw() +
+scale_y_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank(), axis.title = element_text(size=16), axis.text = element_text(size=14)) +
+labs(x="true win %", y="predicted win %", title="Calibration")
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=6) +
+geom_line(color='red', size=2) +
+geom_abline() +
+theme_bw() +
+scale_y_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank(), axis.title = element_text(size=16), axis.text = element_text(size=14)) +
+labs(x="true win %", y="predicted win %", title="Calibration")
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=6) +
+geom_line(color='red', size=2) +
+geom_abline(size=2) +
+theme_bw() +
+scale_y_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank(), axis.title = element_text(size=16), axis.text = element_text(size=14)) +
+labs(x="true win %", y="predicted win %", title="Calibration")
+calibration_plot
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=6) +
+geom_abline(size=2) +
+geom_line(color='red', size=2) +
+theme_bw() +
+scale_y_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank(), axis.title = element_text(size=16), axis.text = element_text(size=14)) +
+labs(x="true win %", y="predicted win %", title="Calibration")
+calibration_plot
+ggsave(calibration_plot, path="results", filename = "calibration.png", dpi=100, width=6, height=3)
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=6) +
+geom_abline(size=1) +
+geom_line(color='red', size=1) +
+theme_bw() +
+scale_y_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank(), axis.title = element_text(size=14),
+axis.text = element_text(size=12)) +
+labs(x="true win %", y="predicted win %", title="Calibration")
+ggsave(calibration_plot, path="results", filename = "calibration.png", dpi=100, width=6, height=3)
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=3) +
+geom_abline(size=1) +
+geom_line(color='red', size=1) +
+theme_bw() +
+scale_y_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+scale_x_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme(panel.grid.minor = element_blank(), axis.title = element_text(size=14),
+axis.text = element_text(size=12)) +
+labs(x="true win %", y="predicted win %", title="Calibration")
+ggsave(calibration_plot, path="results", filename = "calibration.png", dpi=100, width=6, height=3)
+# Only 1500 of 11500 possible teams give a >= 0.50 model score against the blue team.
+# So they've got a pretty good team.
+# Check whether these probabilities are well-calibrated.
+ggplot(possible_our_teams_dat) +
+geom_line(aes(x=1:nrow(possible_our_teams_dat), y=win_proba[order(-win_proba)])) +
+theme_bw()
+# Only 1500 of 11500 possible teams give a >= 0.50 model score against the blue team.
+# So they've got a pretty good team.
+# Check whether these probabilities are well-calibrated.
+ggplot(possible_our_teams_dat) +
+geom_line(aes(x=1:nrow(possible_our_teams_dat), y=win_proba[order(-win_proba)])) +
+labs(x="Composition index", y="Win probability",
+title="Win probabilities for all possible Green compositions, against the specified Blue team.")
+# Only 1500 of 11500 possible teams give a >= 0.50 model score against the blue team.
+# So they've got a pretty good team.
+# Check whether these probabilities are well-calibrated.
+ggplot(possible_our_teams_dat) +
+geom_line(aes(x=1:nrow(possible_our_teams_dat), y=win_proba[order(-win_proba)])) +
+labs(x="Composition index", y="Win probability",
+title="Win probabilities for all possible Green compositions, against the specified Blue team.") +
+theme_bw()
+scale_y_percent <- list(
+scale_y_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)))
+scale_y_percent <- list(
+scale_y_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)))
+theme_percent <- list(theme(panel.grid.minor = element_blank(), axis.title = element_text(size=14),
+axis.text = element_text(size=12)))
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=3) +
+geom_abline(size=1) +
+geom_line(color='red', size=1) +
+theme_bw() +
+scale_y_percent() +
+scale_x_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+labs(x="true win %", y="predicted win %", title="Calibration")
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=3) +
+geom_abline(size=1) +
+geom_line(color='red', size=1) +
+theme_bw() +
+scale_y_percent +
+scale_x_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+labs(x="true win %", y="predicted win %", title="Calibration")
+calibration_plot <- bucket_means_dat %>%
+ggplot(aes(x=true_win_prop, y=pred_win_prop)) +
+geom_point(color='red', size=3) +
+geom_abline(size=1) +
+geom_line(color='red', size=1) +
+theme_bw() +
+scale_y_percent +
+scale_x_continuous(labels=partial(scales::percent, accuracy=1), limits=c(0, 1), breaks=seq(0, 1, 0.1)) +
+theme_percent +
+labs(x="true win %", y="predicted win %", title="Calibration")
+# Only 1500 of 11500 possible teams give a >= 0.50 model score against the blue team.
+# So they've got a pretty good team.
+# Check whether these probabilities are well-calibrated.
+ggplot(possible_our_teams_dat) +
+geom_line(aes(x=1:nrow(possible_our_teams_dat), y=win_proba[order(-win_proba)])) +
+labs(x="Composition index", y="Win probability",
+title="Win probabilities for all possible Green compositions, against the specified Blue team.") +
+scale_y_percent +
+theme_bw() +
+theme_percent
+# Only 1500 of 11500 possible teams give a >= 0.50 model score against the blue team.
+# So they've got a pretty good team.
+# Check whether these probabilities are well-calibrated.
+ggplot(possible_our_teams_dat) +
+geom_line(aes(x=1:nrow(possible_our_teams_dat), y=win_proba[order(-win_proba)])) +
+labs(x="Composition index", y="Win probability",
+title="Win probabilities for all possible Green compositions, against the specified Blue team.") +
+geom_hline(yintercept=0.5)
+# Only 1500 of 11500 possible teams give a >= 0.50 model score against the blue team.
+# So they've got a pretty good team.
+# Check whether these probabilities are well-calibrated.
+ggplot(possible_our_teams_dat) +
+geom_line(aes(x=1:nrow(possible_our_teams_dat), y=win_proba[order(-win_proba)])) +
+labs(x="Composition index", y="Win probability",
+title="Win probabilities for all possible Green compositions, against the specified Blue team.") +
+geom_hline(yintercept=0.5, color='blue', alpha=0.5) +
+scale_y_percent +
+theme_bw() +
+theme_percent
+# Only 1500 of 11500 possible teams give a >= 0.50 model score against the blue team.
+# So they've got a pretty good team.
+# Check whether these probabilities are well-calibrated.
+ggplot(possible_our_teams_dat) +
+geom_line(aes(x=1:nrow(possible_our_teams_dat), y=win_proba[order(-win_proba)])) +
+labs(x="Composition index", y="Win probability",
+title="Win probabilities for all possible Green compositions, against the specified Blue team.") +
+geom_hline(yintercept=0.5, color='blue', alpha=0.5) +
+scale_y_percent +
+scale_x_continuous(labels = scales::number) +
+theme_bw() +
+theme_percent
+# Only 1500 of 11500 possible teams give a >= 0.50 model score against the blue team.
+# So they've got a pretty good team.
+# Check whether these probabilities are well-calibrated.
+ggplot(possible_our_teams_dat) +
+geom_line(aes(x=1:nrow(possible_our_teams_dat), y=win_proba[order(-win_proba)])) +
+labs(x="Composition index", y="Win probability",
+title="Win probabilities for all possible Green compositions, against the specified Blue team.") +
+geom_hline(yintercept=0.5, color='blue', alpha=0.5) +
+scale_y_percent +
+scale_x_continuous(labels = scales::comma) +
+theme_bw() +
+theme_percent
+# Only 1500 of 11500 possible teams give a >= 0.50 model score against the blue team.
+# So they've got a pretty good team.
+# Check whether these probabilities are well-calibrated.
+ggplot(possible_our_teams_dat) +
+geom_line(aes(x=1:nrow(possible_our_teams_dat), y=win_proba[order(-win_proba)])) +
+labs(x="Composition index", y="Win probability",
+title="Win probabilities for all possible Green compositions, against the specified Blue team.") +
+geom_hline(yintercept=0.5, color='blue', alpha=0.5) +
+scale_y_percent +
+scale_x_continuous(labels = scales::comma, breaks=seq(0, 12000, 1500)) +
+theme_bw() +
+theme_percent
+ggsave(calibration_plot, path="results", filename = "all_win_probas.png", dpi=100, width=6, height=3)
+# Only 1500 of 11500 possible teams give a >= 0.50 model score against the blue team.
+# So they've got a pretty good team.
+# Check whether these probabilities are well-calibrated.
+all_win_probas_plot <- ggplot(possible_our_teams_dat) +
+geom_line(aes(x=1:nrow(possible_our_teams_dat), y=win_proba[order(-win_proba)])) +
+labs(x="Composition index", y="Win probability",
+title="Win probabilities for all possible Green compositions, against the specified Blue team.") +
+geom_hline(yintercept=0.5, color='blue', alpha=0.5) +
+scale_y_percent +
+scale_x_continuous(labels = scales::comma, breaks=seq(0, 12000, 1500)) +
+theme_bw() +
+theme_percent
+ggsave(calibration_plot, path="results", filename = "all_win_probas.png", dpi=100, width=6, height=3)
+ggsave(all_win_probas_plot, path="results", filename = "all_win_probas.png", dpi=100, width=6, height=3)
+# Only 1500 of 11500 possible teams give a >= 0.50 model score against the blue team.
+# So they've got a pretty good team.
+# Check whether these probabilities are well-calibrated.
+all_win_probas_plot <- ggplot(possible_our_teams_dat) +
+geom_line(aes(x=1:nrow(possible_our_teams_dat), y=win_proba[order(-win_proba)])) +
+labs(x="Composition index", y="Win probability",
+title="Win probabilities for all possible Green compositions,\nagainst the specified Blue team.") +
+geom_hline(yintercept=0.5, color='blue', alpha=0.5) +
+scale_y_percent +
+scale_x_continuous(labels = scales::comma, breaks=seq(0, 12000, 1500)) +
+theme_bw() +
+theme_percent
+ggsave(all_win_probas_plot, path="results", filename = "all_win_probas.png", dpi=100, width=6, height=3)
+dim(possible_our_teams_dat)
+ggsave(all_win_probas_plot, path="results", filename = "all_win_probas.png", dpi=100, width=6, height=3)
+10500 / 1000
+# Only 1500 of 11500 possible teams give a >= 0.50 model score against the blue team.
+# So they've got a pretty good team.
+# Check whether these probabilities are well-calibrated.
+all_win_probas_plot <- ggplot(possible_our_teams_dat) +
+geom_line(aes(x=1:nrow(possible_our_teams_dat), y=win_proba[order(-win_proba)])) +
+labs(x="Composition index", y="Win probability",
+title="Win probabilities for all possible Green compositions,\nagainst the specified Blue team.") +
+geom_hline(yintercept=0.5, color='blue', alpha=0.5) +
+scale_y_percent +
+scale_x_continuous(labels = function(x) paste0(x / 1000, "K"), breaks=seq(0, 12000, 1500)) +
+theme_bw() +
+theme_percent
+ggsave(all_win_probas_plot, path="results", filename = "all_win_probas.png", dpi=100, width=6, height=3)
+possible_our_teams_dat %>% dplyr::filter(win_proba >= 0.8)
+possible_our_teams_dat %>% group_by(win_proba_above_cut) %>% summarize(n())
+possible_our_teams_dat %<>% dplyr::mutate(win_proba_above_cut = win_proba >= 0.8)
+possible_our_teams_dat %>% group_by(win_proba_above_cut) %>% summarize(n())
+possible_our_teams_dat %<>% dplyr::mutate(win_proba_above_cut = win_proba >= 0.7)
+possible_our_teams_dat %>% group_by(win_proba_above_cut) %>% summarize(n())
+possible_our_teams_dat[1,]
+possible_our_teams_dat
+possible_our_teams_dat$win_proba
+possible_our_teams_dat %<>% mutate(win_proba = outcome_probas) %>% arrange(desc(win_proba))
+possible_our_teams_dat[1,]
+apply(top_teams_dat, 1, function(row) columns[c(row) == 1]) %>% t()
+top_teams_dat <- possible_our_teams_dat %>% head(top_n)
+apply(top_teams_dat, 1, function(row) columns[c(row) == 1]) %>% t()
+possible_our_teams_dat %<>% mutate(win_proba = outcome_probas) %>% arrange(desc(win_proba))
+top_n <- 10
+top_teams_dat %>% select(-win_proba) %>% apply(1, function(row) columns[c(row) == 1]) %>% t()
+possible_our_teams_dat %<>% mutate(win_proba = outcome_probas) %>% arrange(desc(win_proba))
+top_n <- 10
+top_teams_dat <- possible_our_teams_dat %>% head(top_n)
+top_teams_dat %>% select(-win_proba) %>% apply(1, function(row) columns[c(row) == 1]) %>% t()
+top_teams_dat
+possible_our_teams_dat <- data.frame(possible_our_teams_mat) %>% as_tibble()
+colnames(possible_our_teams_dat) <- columns
+outcome_probas <- predict(model, possible_games_mat)
+possible_our_teams_dat <- data.frame(possible_our_teams_mat) %>% as_tibble()
+colnames(possible_our_teams_dat) <- columns
+possible_our_teams_dat %<>% mutate(win_proba = outcome_probas) %>% arrange(desc(win_proba))
+top_n <- 10
+top_teams_dat <- possible_our_teams_dat %>% head(top_n)
+top_teams_dat %>% select(-win_proba) %>% apply(1, function(row) columns[c(row) == 1]) %>% t()
+top_probas <- possible_our_teams_dat %$% win_proba %>% head(top_n)
+top_probas
+top_teams_dat %>% select(-win_proba) %>% apply(1, function(row) columns[c(row) == 1]) %>% t() %>% cbind(top_probas)
+top_teams_dat %>% select(-win_proba) %>% apply(1, function(row) columns[c(row) == 1]) %>% t() %>% cbind(top_probas)
+paste(opponent_team, ",")
+paste(opponent_team, collapse=",")
+paste(opponent_team, collapse=", ")
+possible_our_teams_dat %>% group_by(win_proba_above_cut) %>% summarize(n())
+possible_our_teams_dat %<>% dplyr::mutate(win_proba_above_cut = win_proba >= 0.7)
+possible_our_teams_dat %>% group_by(win_proba_above_cut) %>% summarize(n())
+above_cut_teams_dat <- possible_our_teams_dat %>% dplyr::filter(win_proba_above_cut)
+above_cut_teams_dat
+above_cut_teams_dat %>% apply(2, mean)
+above_cut_teams_dat %>% .[columns] %>% apply(2, mean)
+above_cut_teams_dat %>% .[columns] %>% apply(2, mean) %>% .[order(.)]
+above_cut_teams_dat %>% .[columns] %>% apply(2, mean) %>% .[order(-.)]
+above_cut_teams_dat %>% .[columns] %>% apply(2, mean) %>% .[order(-.)] %>% tibble()
+above_cut_teams_dat %>% .[columns] %>% apply(2, mean) %>% .[order(-.)] %>% tibble(name=names(.), proba=.)
+person_prop_above_cut_dat <- above_cut_teams_dat %>%
+.[columns] %>%
+apply(2, mean) %>%
+.[order(-.)] %>%
+tibble(name=names(.), proba=.)
+person_prop_above_cut_dat %$% name %>% paste0(collapse="\n")
+print(person_prop_above_cut_dat %$% name %>% paste0(collapse="\n"))
+source('~/projects/lw_d_n_d_5/matches.R', echo=TRUE)
+person_prop_above_cut_dat <- above_cut_teams_dat %>%
+.[columns] %>%
+apply(2, mean) %>%
+.[order(-.)] %>%
+tibble(name=names(.), proba=.)
+cat(person_prop_above_cut_dat %$% name %>% paste0(collapse="\n"))
+cat(person_prop_above_cut_dat %$% proba %>% paste0(collapse="\n"))
+1/19
+object.size(get(possible_our_teams_dat))
+object.size((possible_our_teams_dat))
+object.size((possible_our_teams_dat)) / 10^9
+object.size((possible_our_teams_dat)) / 10.^9
+object.size((possible_our_teams_dat)) / 10.0^9
+object.size((possible_our_teams_dat)) / (10.0^9 + 0.001)
+object.size((possible_our_teams_dat)) / (10.0^6 + 0.001)
+possible_our_teams_mat <- apply(teams, 1, function(row) as.numeric(columns %in% row)) %>% t()
+teams
+history()
+possible_our_teams_mat <- apply(teams, 1, function(row) as.numeric(columns %in% row)) %>% t()
+?history
+savehistory(max.show=Inf, file='history.txt')
+savehistory(file='history.txt')
+
+
+Blaze Boy
+Greenery Giant
+Nullifying Nightmare
+Rock-n-Roll Ranger
+Tidehollow Tyrant
+
+Blaze Boy
+Greenery Giant
+Nullifying Nightmare
+Phoenix Paladin
+Tidehollow Tyrant 
+
+Blaze Boy
+Greenery Giant
+Landslide Lord
+Nullifying Nightmare
+Tidehollow Tyrant 
+
+Blaze Boy
+Greenery Giant
+Nullifying Nightmare
+Oil Ooze
+Tidehollow Tyrant 
+
+Blaze Boy
+Greenery Giant
+Nullifying Nightmare
+Quartz Questant
+Tidehollow Tyrant 
+
+Arch-Alligator
+Blaze Boy
+Greenery Giant
+Nullifying Nightmare
+Tidehollow Tyrant 
+
+Blaze Boy
+Greenery Giant
+Nullifying Nightmare
+Tidehollow Tyrant
+Volcano Villain   
+
+Blaze Boy
+Greenery Giant
+Inferno Imp
+Nullifying Nightmare
+Tidehollow Tyrant 
+
+Blaze Boy
+Dire Druid
+Greenery Giant
+Nullifying Nightmare
+Tidehollow Tyrant 
+
+Blaze Boy
+Greenery Giant
+Nullifying Nightmare
+Tidehollow Tyrant
+Warrior of Winter 
+
+Blaze Boy
+Captain Canoe
+Greenery Giant
+Nullifying Nightmare
+Tidehollow Tyrant 
+
+Blaze Boy
+Greenery Giant
+Nullifying Nightmare
+Siren Sorceress
+Tidehollow Tyrant 
+
+Blaze Boy
+Earth Elemental
+Greenery Giant
+Nullifying Nightmare
+Tidehollow Tyrant 
+
+Blaze Boy
+Fire Fox
+Greenery Giant
+Nullifying Nightmare
+Tidehollow Tyrant 
+
+Blaze Boy
+Greenery Giant
+Maelstrom Mage
+Nullifying Nightmare
+Tidehollow Tyrant 
